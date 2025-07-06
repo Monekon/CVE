@@ -37,13 +37,13 @@ The ERC721 `_transfer` implementation in `Dependencies.sol` lacks a validation t
 1. The user owns an NFT with `tokenId = 1`
 
 ![Step 1](../img/Step_1.png)
-Figure 1. The user is the current owner of the NFT with tokenId = 1.
+Figure 1. The user is the current owner of the NFT with `tokenId = 1`.
 
 
 2. The attacker obtains approval to transfer the user's NFT
 
 ![Step 2](../img/Step_2.png)
-Figure 2. Figure 2. The user calls the `approve` function, granting the attacker permission to transfer their NFT.
+Figure 2. The user calls the `approve` function, granting the attacker permission to transfer their NFT.
 
 
 3. The attacker transfers the NFT to the zero address
@@ -58,7 +58,7 @@ Figure 3. The attacker calls the `_transfer` function with `to == address(0)`, s
 ---
 
 ## Impact
-- **Potential user financial loss:** Users can lose NFTs through malicious transactions or unintentional misuse.
+- **Potential user financial loss:** Users may lose NFTs due to malicious transactions or unintentional misuse.
 - **Irrecoverable asset loss:** NFTs transferred to the zero address are permanently inaccessible.
 - **ERC721 standard violation:** Transfers to the zero address without explicit burn violate EIP-721 requirements.
 - **Indexing and ecosystem inconsistencies:** Indexers like The Graph or OpenSea may interpret the transfer as a burn, but the contract state may not align due to the missing burn logic.
